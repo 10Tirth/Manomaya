@@ -12,10 +12,12 @@ export default function Stalls() {
   const filtered = filter === 'all' ? STALLS : STALLS.filter((s) => s.type === filter);
 
   return (
-    <section id="stalls" className="section">
-      <div className="wrap">
-        <h2 className="section-title">Garden stalls <span className="soft">to shop &amp; munch</span></h2>
-        <div className="filters mb-4" role="tablist" aria-label="Filter stalls">
+    <section id="stalls" className="section bg-cream py-12" aria-labelledby="stalls-heading">
+      <div className="wrap max-w-6xl mx-auto px-5 md:px-8">
+        <h2 id="stalls-heading" className="font-display text-ink text-3xl md:text-4xl mb-8">
+          Garden stalls to shop &amp; munch
+        </h2>
+        <div className="filters mb-6" role="tablist" aria-label="Filter stalls">
           {['all', 'food', 'shop'].map((f) => (
             <button
               key={f}
@@ -28,11 +30,11 @@ export default function Stalls() {
             </button>
           ))}
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((s) => (
-            <div key={s.id} className="p-4 border rounded-xl bg-paper shadow-soft">
-              <h3 className="font-medium mb-1">{s.name}</h3>
-              <p className="text-sm text-slate">{s.description}</p>
+            <div key={s.id} className="p-5 border rounded-xl bg-paper shadow-soft">
+              <h3 className="font-medium text-sage-deep mb-1">{s.name}</h3>
+              <p className="text-sm text-slate mb-2">{s.description}</p>
             </div>
           ))}
         </div>
