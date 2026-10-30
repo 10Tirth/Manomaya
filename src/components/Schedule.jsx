@@ -3,7 +3,7 @@ import { formatDayDate, formatTimeRange } from '../lib/format.js';
 
 export default function Schedule() {
   return (
-    <section id="schedule" className="section bg-cream" aria-labelledby="schedule-heading">
+    <section id="schedule" className="section bg-cream py-12" aria-labelledby="schedule-heading">
       <div className="wrap max-w-6xl mx-auto px-5 md:px-8">
         <h2 id="schedule-heading" className="font-display text-ink text-3xl md:text-4xl mb-8">
           Schedule – day by day
@@ -13,9 +13,9 @@ export default function Schedule() {
             <h3 className="text-lg font-semibold text-sage-deep mb-3">
               {formatDayDate(d.date)} – {d.theme}
             </h3>
-            <ul className="list-none space-y-2">
+            <ul className="list-none space-y-4">
               {ACTIVITIES.filter((a) => a.day === d.day).map((a) => (
-                <li key={a.id} className="flex flex-col md:flex-row md:items-center text-sm text-ink">
+                <li key={a.id} className="flex flex-col md:flex-row md:items-center text-sm text-ink py-2">
                   <span className="w-48 md:w-auto font-medium text-sage-deep">
                     {formatTimeRange(a.start, a.end)}
                   </span>
