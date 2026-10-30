@@ -6,6 +6,8 @@ import Hero from './components/Hero.jsx'
 import Marquee from './components/Marquee.jsx'
 import About from './components/About.jsx'
 import Journey from './components/Journey.jsx'
+import Schedule from './components/Schedule.jsx'
+import Stalls from './components/Stalls.jsx'
 import Activities from './components/Activities.jsx'
 import Wellness from './components/Wellness.jsx'
 import Support from './components/Support.jsx'
@@ -42,6 +44,8 @@ export default function App() {
         <Marquee />
         <About />
         <Journey onSelectDay={setSelectedDay} />
+        <Schedule />
+        <Stalls />
         <Activities
           onRegister={openRegister}
           registeredIds={registeredIds}
