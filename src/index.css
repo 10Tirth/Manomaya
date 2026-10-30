@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colours */
+  --color-cream: #FBFAF7;
+  --color-paper: #FFFFFF;
+  --color-ink: #1F2A37;
+  --color-slate: #5B6773;
+  --color-sage: #8CC3B1;
+  --color-sage-deep: #3E7C6D;
+  --color-lavender: #D8D2F7;
+  --color-lavender-deep: #5B4FBF;
+  --color-peach: #FFDCCB;
+  --color-peach-deep: #B8492D;
+  --color-sky: #D5EAF8;
+  --color-sky-deep: #2B6A99;
+  --color-butter: #FFF1C7;
+  --color-butter-deep: #8A5E00;
+  --color-line: #E7E5E0;
+  --color-danger: #B42318;
+
+  /* Fonts */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-soft: 0 1px 2px rgba(31,42,55,.04), 0 16px 40px -16px rgba(31,42,55,.16);
+  --shadow-lift: 0 2px 4px rgba(31,42,55,.06), 0 20px 48px -12px rgba(31,42,55,.24);
+}
+
+/* ── Global resets & base styles ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--color-sage-deep);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus ring everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-sage-deep);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-sage-deep) 0%, var(--color-lavender-deep) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating blob animation */
+@keyframes floatBlob {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-24px) scale(1.04); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.blob-float {
+  animation: floatBlob 10s ease-in-out infinite alternate;
+}
+.blob-float-slow {
+  animation: floatBlob 12s ease-in-out infinite alternate;
+  animation-delay: -4s;
+}
+.blob-float-fast {
+  animation: floatBlob 8s ease-in-out infinite alternate;
+  animation-delay: -2s;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-sage-deep), var(--color-lavender-deep));
+  z-index: 9999;
+  transform-origin: left;
+  transition: width 0.1s linear;
+}
+
+/* Dialog backdrop */
+dialog::backdrop {
+  background: rgba(31, 42, 55, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+/* Dialog entrance animation */
+@keyframes dialogIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes sheetIn {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Final CTA floating shapes parallax */
+@keyframes floatShape {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+.float-shape {
+  animation: floatShape 6s ease-in-out infinite;
+}
+.float-shape-2 {
+  animation: floatShape 8s ease-in-out infinite;
+  animation-delay: -3s;
+}
+.float-shape-3 {
+  animation: floatShape 7s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .blob-float, .blob-float-slow, .blob-float-fast,
+  .marquee-track, .float-shape, .float-shape-2, .float-shape-3 {
+    animation: none !important;
+  }
+}
