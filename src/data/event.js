@@ -1,6 +1,6 @@
 export const EVENT = {
-  name: 'Mind Matters Fest 2026',
-  shortName: 'Mind Matters',
+  name: 'Manomaya 2026',
+  shortName: 'Manomaya',
   tagline: 'Breathe. Reflect. Bloom.',
   college: 'Your College Name',
   venue: 'Your College Campus',
